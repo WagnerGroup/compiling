@@ -27,3 +27,4 @@ I fixed this by adding -dynamic to all the CFLAGS variables in all the Makefile 
   grep '^CFLAGS = ' `find . -name Makefile`
 
 Add -dynamic to each line.
+Run make in ./deps/src/libxc before running the pyscf make again.
