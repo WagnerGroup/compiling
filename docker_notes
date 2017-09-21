@@ -1,0 +1,6 @@
+docker build --no-cache -t lkwagner/pyscf pyscf/
+docker push lkwagner/pyscf
+docker run -it --rm  -v directory1:directory2
+qsub -I -l walltime=00:30:00 –l nodes=1:ppn=1
+module load shifter
+getDockerImage lkwagner/pyscf:latest
