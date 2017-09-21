@@ -1,0 +1,29 @@
+########## Getting started:
+
+You'll need to load these modules:
+
+  module load cmake
+  module load bwpy
+  module swap PrgEnv-cray PrgEnv-gnu
+  module refresh cray-libsci
+
+In CMakeLists.txt:
+    remove #find_package(BLAS REQUIRED)
+    add include(CheckFunctionExists) before check_function_exists
+ You will also need to do this for libcint.
+ i.e. call make, PySCF fails due to BLAS issue, edit ./deps/src/libcint/CMakeLists.txt
+Running pyscf:
+- import the above modules.
+- export PYTHONPATH=~/pyscf
+
+############ Additional issues.
+
+** I'm getting a 'attempted static link of dynamic object' error. **
+
+Brian:
+I fixed this by adding -dynamic to all the CFLAGS variables in all the Makefile files.
+
+  cd ./deps/src/libxc
+  grep '^CFLAGS = ' `find . -name Makefile`
+
+Add -dynamic to each line.
