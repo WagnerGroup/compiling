@@ -1,0 +1,20 @@
+##################################################
+# Put this in the qwalkroot/src/make folder, e.g.
+# qwalkroot/src/make/bw.mk
+# Call make with make PLATFORM=bw
+##################################################
+
+#for gnu with blas and lapack issue this command: 
+# module swap PrgEnv-cray PrgEnv-gnu; module load acml; module load cblas
+#module info cblas if the BLAS location doesn't work for you
+
+CXX:=CC
+CXXFLAGS:= -O3
+CXXFLAGS += -DUSE_MPI -DUSE_BLAS -DUSE_LAPACK  ${INCLUDEPATH}
+
+BLAS_INCLUDE :=
+
+DEBUG:= -DNO_RANGE_CHECKING   -DNDEBUG
+######################################################################
+# This is the invokation to generate dependencies
+DEPENDMAKER:=g++ -MM  $(INCLUDEPATH)
