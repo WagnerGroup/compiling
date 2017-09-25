@@ -7,11 +7,16 @@ You'll need to load these modules:
   module swap PrgEnv-cray PrgEnv-gnu
   module refresh cray-libsci
 
+
 In CMakeLists.txt:
     remove #find_package(BLAS REQUIRED)
     add include(CheckFunctionExists) before check_function_exists
  You will also need to do this for libcint.
  i.e. call make, PySCF fails due to BLAS issue, edit ./deps/src/libcint/CMakeLists.txt
+
+  sed s/'find_package(BLAS REQUIRED)'/'#find_package(BLAS REQUIRED)'/ ../CMakeLists.txt -i
+  sed '1 i\include(CheckFunctionExists)' ../CMakeLists.txt  -i
+
 Running pyscf:
 - import the above modules.
 - export PYTHONPATH=~/pyscf

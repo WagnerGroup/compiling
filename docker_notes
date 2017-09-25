@@ -4,3 +4,9 @@ docker run -it --rm  -v directory1:directory2
 qsub -I -l walltime=00:30:00 –l nodes=1:ppn=1
 module load shifter
 getDockerImage lkwagner/pyscf:latest
+
+FROM python:3-slim
+RUN apt-get -y update && apt-get install -y git cmake make build-essential g++ liblapack-dev liblapack-pic liblapack3  gfortran && pip install numpy scipy matplotlib pandas h5py
+RUN git clone https://github.com/lkwagner/pyscf.git && cd pyscf &&  git checkout dev &&  cd pyscf/lib && mkdir build && cd build &&  cmake .. && make
+CMD bash
+
