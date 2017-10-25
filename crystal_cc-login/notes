@@ -2,3 +2,13 @@ Get the executables (Pcrystal and Pproperties) from Box
 [Lucas' weekly meeting/Useful files/crystal/crystal17_cc-login
 https://uofi.app.box.com/folder/40966375791
 
+How to compile
+- Get crystal17_v1_0_1_Linux-ifort17_emt64_Pdistrib.tar.gz 
+> tar -zxvf crystal17_v1_0_1_Linux-ifort17_emt64_Pdistrib.tar.gz
+> module load openmpi/1.4-gcc+ifort
+> module load intel/17.0
+> cd build/Xmakes
+- Set the variable MPIBIN in Linux-ifort17_XE_emt64.inc to be MPIBIN = /usr/local/openmpi-1.4-intel/bin
+> cd ..
+> make parallel
+- The executable crystal, properties, Pcrystal and Pproperties will be written in bin/Linux-ifort17_XE_emt64/v1_0_1.
