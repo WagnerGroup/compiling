@@ -6,7 +6,7 @@ Get Lucas's binary from `/projects/sciteam/batr/crystal_lucas/bin/Linux-ifort14_
 
 Last verified on crystal17-1.0.2 on 07-02-2017.
 
-Get the objects from Box/Weekly meetings with `lucas/Useful files/crystal[version]/*`
+Get the objects from `Box/Weekly meetings with lucas/Useful files/crystal[version]/*`
 
 Unzip the version:
 
