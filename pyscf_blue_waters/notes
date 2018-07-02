@@ -13,13 +13,9 @@ In CMakeLists.txt:
     add include(CheckFunctionExists) before check_function_exists
  You will also need to do this for libcint.
  i.e. call make, PySCF fails due to BLAS issue, edit ./deps/src/libcint/CMakeLists.txt
-These commands will do that for you if you run them in ./pyscf/lib/build/
 
   sed s/'find_package(BLAS REQUIRED)'/'#find_package(BLAS REQUIRED)'/ ../CMakeLists.txt -i
   sed '1 i\include(CheckFunctionExists)' ../CMakeLists.txt  -i
-  make
-  sed s/'find_package(BLAS REQUIRED)'/'#find_package(BLAS REQUIRED)'/ deps/src/libcint/CMakeLists.txt -i
-  make
 
 Running pyscf:
 - import the above modules.
@@ -31,8 +27,9 @@ Running pyscf:
 
 Brian:
 I fixed this by adding -dynamic to all the CFLAGS variables in all the Makefile files.
+
+  cd ./deps/src/libxc
+  grep '^CFLAGS = ' `find . -name Makefile`
+
 Add -dynamic to each line.
-
-  sed 's/CFLAGS = -g -O2/CFLAGS = -g -O2 -dynamic/' -i `find ./deps/src/libxc -name Makefile`
-
 Run make in ./deps/src/libxc before running the pyscf make again.
