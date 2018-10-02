@@ -1,0 +1,30 @@
+
+Here's how I installed Docker --Brian.
+
+1. Install Docker on your own computer: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
+2. Get a repo on dockerhub. I called it bbusemeyer/pyscf
+
+3. Issue these commands (with sudo priviliges).
+
+  docker build --no-cache -t bbusemeyer/pyscf pyscf/
+  docker login
+  docker push bbusemeyer/pyscf
+
+4. Lucas has this command but I'm not yet sure what it does. I skipped it.
+
+  docker run -it --rm  -v directory1:directory2
+
+5. Log into BW and start an interactive job to set up Docker there.
+
+  qsub -I -l walltime=00:30:00 -l nodes=1:ppn=1
+  module load shifter
+  getDockerImage bbusemeyer/pyscf:latest
+
+
+Here's an example Dockerfile for PySCF:
+
+FROM python:3-slim
+RUN apt-get -y update && apt-get install -y git cmake make build-essential g++ liblapack-dev liblapack-pic liblapack3  gfortran && pip install numpy scipy matplotlib pandas h5py
+RUN git clone https://github.com/bbusemeyer/pyscf.git && cd pyscf &&  git checkout dev &&  cd pyscf/lib && mkdir build && cd build &&  cmake .. && make
+CMD bash
+
