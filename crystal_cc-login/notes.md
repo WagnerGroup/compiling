@@ -80,7 +80,8 @@ Using module on campus cluster means it will be `/usr/local/openmpi-1.4-intel/bi
 
     cd ..
 
-6.- type `
+6.- type
+
     # This makes the serial components.
     make
     # This makes the parallel components.
