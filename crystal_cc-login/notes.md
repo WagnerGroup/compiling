@@ -80,11 +80,11 @@ Using module on campus cluster means it will be `/usr/local/openmpi-1.4-intel/bi
 
     cd ..
 
-6.- type 
+6.- type `
     # This makes the serial components.
     make
     # This makes the parallel components.
-    make parallel
+    make parallel`
 
 
 7.- the executable crystal, properties, Pcrystal and Pproperties will be written in `~/CRYSTAL17/bin/Linux-ifort17_XE_emt64/v1_0_2.`
