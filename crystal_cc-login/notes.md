@@ -6,11 +6,14 @@ It's on Box under `Weekly meetings with Lucas/Useful files/crystal/crystal17_1.0
 
 Specific instructions to make Pcrystal:
 
+*Note: this has been updated since campus cluster has been updated and lost many of the modules it used to have.*
+Some instructions may not be optimal, for instance loading intel/18.0 might be better as intel/17.0, but that's not available on campus cluster currently.
+
 0.- Load the modules needed for crystal 
 
     module unload [any other intel libraries]
-    module load openmpi/1.4-gcc+ifort
-    module load intel/17.0
+    module load intel/18.0
+    module load openmpi/3.1.1-intel-18.0
 
 1.- Make the crystal root directory (let us say CRYSTAL17) and copy there the
 file containing the pre-compiled objects modules 
@@ -74,7 +77,7 @@ This file has the following instructions
 
 The user should specify the variable MPIBIN which is the local directory
 where MPI has been installed.
-Using module on campus cluster means it will be `/usr/local/openmpi-1.4-intel/bin`
+Using module on campus cluster means it will be `/usr/local/mpi/openmpi/3.1.1/intel/18.0/bin`
 
 5.- Return to the build directory
 
